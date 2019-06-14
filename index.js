@@ -1,3 +1,4 @@
+const path = require('path');
 const express = require('express');
 const cookieParser = require('cookie-parser');
 
@@ -7,13 +8,14 @@ const PORT = process.env.PORT || 5555;
 const userRoutes = require('./routes/user');
 
 // Middleware
+app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 app.use(cookieParser());
 
 // Home
 app.get('/', (req, res) => {
-  res.status(200).send('MERN Authentication Example')
+  res.status(200).sendFile('index.html');
 });
 
 // Routes
