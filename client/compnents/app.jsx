@@ -1,4 +1,5 @@
 import React from 'react';
+import { Route, Link, Switch } from 'react-router-dom';
 
 import UserSignUp from './userSignUp';
 import UserSignIn from './userSignIn';
@@ -8,11 +9,13 @@ class App extends React.Component {
     return (
       <div>
         <header>
-          <div><h1>MERN Authentication</h1></div>
           <div>
-            <a href="#">Sign In</a>
+            <Link to="/"><h1>MERN Authentication</h1></Link>
+          </div>
+          <div>
+            <Link to="/dashboard">Dashboard</Link>
             <span>&nbsp; | &nbsp;</span>
-            <a href="#">Register</a>
+            <Link to="/signin">Sign In</Link>
           </div>
         </header>
 
@@ -20,12 +23,12 @@ class App extends React.Component {
           <div style={{ marginTop: 10, fontSize: 21 }}>
             <p>
               Hello and welcome to MERN authentication. 
-              <a href="#">Click here</a> you view your dashboard.
+              <Link to="/dashboard">Click here</Link> you view your dashboard.
             </p>
           </div>
 
-          <UserSignUp />
-          <UserSignIn />
+          <Route exact path="/signup" component={UserSignUp} />
+          <Route exact path="/signin" component={UserSignIn} />
         </main>
       </div>
     );

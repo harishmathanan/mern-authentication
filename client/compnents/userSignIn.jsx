@@ -1,8 +1,10 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const UserSignIn = () => (
   <div>
     <h3>Sign In</h3>
+    <div>New user? <Link to="/signup">Sign up</Link> for an account now.</div>
     <form>
       
       <div>
