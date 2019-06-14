@@ -1,9 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import App from './compnents/app';
+
 ReactDOM.render(
-  <div>
-    <h1>MERN Authentication App</h1>
-  </div>,
+  <App />,
   document.getElementById('app')
 );

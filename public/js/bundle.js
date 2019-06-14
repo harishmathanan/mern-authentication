@@ -86,6 +86,42 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "./client/compnents/app.jsx":
+/*!**********************************!*\
+  !*** ./client/compnents/app.jsx ***!
+  \**********************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _userSignUp__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./userSignUp */ \"./client/compnents/userSignUp.jsx\");\n/* harmony import */ var _userSignIn__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./userSignIn */ \"./client/compnents/userSignIn.jsx\");\n\n\n\n\nclass App extends react__WEBPACK_IMPORTED_MODULE_0___default.a.Component {\n  render() {\n    return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"header\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h1\", null, \"MERN Authentication\")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"a\", {\n      href: \"#\"\n    }, \"Sign In\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"span\", null, \"\\xA0 | \\xA0\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"a\", {\n      href: \"#\"\n    }, \"Register\"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"main\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", {\n      style: {\n        marginTop: 10,\n        fontSize: 21\n      }\n    }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"p\", null, \"Hello and welcome to MERN authentication.\", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"a\", {\n      href: \"#\"\n    }, \"Click here\"), \" you view your dashboard.\")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_userSignUp__WEBPACK_IMPORTED_MODULE_1__[\"default\"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_userSignIn__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null)));\n  }\n\n}\n\n;\n/* harmony default export */ __webpack_exports__[\"default\"] = (App);\n\n//# sourceURL=webpack:///./client/compnents/app.jsx?");
+
+/***/ }),
+
+/***/ "./client/compnents/userSignIn.jsx":
+/*!*****************************************!*\
+  !*** ./client/compnents/userSignIn.jsx ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\n\nconst UserSignIn = () => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h3\", null, \"Sign In\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"form\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"label\", {\n  htmlFor: \"email\"\n}, \"Email\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"input\", {\n  type: \"text\",\n  id: \"email\",\n  name: \"email\",\n  placeholder: \"Please enter your email\"\n})), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"label\", {\n  htmlFor: \"password\"\n}, \"Password\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"input\", {\n  type: \"password\",\n  id: \"password\",\n  name: \"password\",\n  placeholder: \"Please enter your password\"\n})), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"button\", null, \"Sign In\"))));\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (UserSignIn);\n\n//# sourceURL=webpack:///./client/compnents/userSignIn.jsx?");
+
+/***/ }),
+
+/***/ "./client/compnents/userSignUp.jsx":
+/*!*****************************************!*\
+  !*** ./client/compnents/userSignUp.jsx ***!
+  \*****************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n\n\nconst UserSignUp = () => react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h3\", null, \"Register a new account\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"form\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"label\", {\n  htmlFor: \"name\"\n}, \"Name\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"input\", {\n  type: \"text\",\n  name: \"name\",\n  placeholder: \"Please enter your name\"\n})), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"label\", {\n  htmlFor: \"email\"\n}, \"Email\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"input\", {\n  type: \"email\",\n  name: \"email\",\n  placeholder: \"Please enter your email\"\n})), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"label\", {\n  htmlFor: \"password\"\n}, \"Password\"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"input\", {\n  type: \"password\",\n  name: \"password\",\n  placeholder: \"Please enter your password\"\n})), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"button\", null, \"Register\"))));\n\n/* harmony default export */ __webpack_exports__[\"default\"] = (UserSignUp);\n\n//# sourceURL=webpack:///./client/compnents/userSignUp.jsx?");
+
+/***/ }),
+
 /***/ "./client/index.jsx":
 /*!**************************!*\
   !*** ./client/index.jsx ***!
@@ -94,7 +130,7 @@
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);\n\n\nreact_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"div\", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(\"h1\", null, \"MERN Authentication App\")), document.getElementById('app'));\n\n//# sourceURL=webpack:///./client/index.jsx?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ \"./node_modules/react/index.js\");\n/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ \"./node_modules/react-dom/index.js\");\n/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(react_dom__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _compnents_app__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./compnents/app */ \"./client/compnents/app.jsx\");\n\n\n\nreact_dom__WEBPACK_IMPORTED_MODULE_1___default.a.render(react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_compnents_app__WEBPACK_IMPORTED_MODULE_2__[\"default\"], null), document.getElementById('app'));\n\n//# sourceURL=webpack:///./client/index.jsx?");
 
 /***/ }),
 
