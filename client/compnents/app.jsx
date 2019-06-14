@@ -1,10 +1,24 @@
 import React from 'react';
-import { Route, Link, Switch } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 
+import Dashboard from './dashboard';
 import UserSignUp from './userSignUp';
 import UserSignIn from './userSignIn';
 
+
 class App extends React.Component {
+  constructor() {
+    super();
+
+    this.state = {
+      inProgress: false,
+      isError: false,
+      message: '',
+      isAuthenticated: false,
+      user: null
+    };
+  }
+
   render() {
     return (
       <div>
@@ -27,6 +41,11 @@ class App extends React.Component {
             </p>
           </div>
 
+          <Route 
+            exact
+            path="/dashboard"
+            render={() => <Dashboard isAuthenticated={this.state.isAuthenticated} />} 
+          />
           <Route exact path="/signup" component={UserSignUp} />
           <Route exact path="/signin" component={UserSignIn} />
         </main>

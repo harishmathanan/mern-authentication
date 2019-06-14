@@ -6,17 +6,32 @@ const UserSignUp = () => (
     <form>
       <div>
         <label htmlFor="name">Name</label>
-        <input type="text" name="name" placeholder="Please enter your name" />
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Please enter your name"
+        />
       </div>
 
       <div>
         <label htmlFor="email">Email</label>
-        <input type="email" name="email" placeholder="Please enter your email" />
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Please enter your email"
+        />
       </div>
 
       <div>
         <label htmlFor="password">Password</label>
-        <input type="password" name="password" placeholder="Please enter your password" />
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="Please enter your password"
+        />
       </div>
 
       <div>
