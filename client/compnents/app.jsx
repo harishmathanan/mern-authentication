@@ -1,4 +1,5 @@
 import React from 'react';
+import Axios from 'axios';
 import { Route, Link } from 'react-router-dom';
 
 import Dashboard from './dashboard';
@@ -11,7 +12,6 @@ class App extends React.Component {
     super();
 
     this.state = {
-      inProgress: false,
       isError: false,
       message: '',
       isAuthenticated: false,
@@ -33,24 +33,76 @@ class App extends React.Component {
           </div>
         </header>
 
+        <div>
+          {this.state.message}
+        </div>
+
         <main>
           <div style={{ marginTop: 10, fontSize: 21 }}>
             <p>
-              Hello and welcome to MERN authentication. 
+              Hello {this.state.user ? this.state.user.name : 'guest'} and welcome to MERN authentication. 
               <Link to="/dashboard">Click here</Link> you view your dashboard.
             </p>
           </div>
 
-          <Route 
+          <Route
             exact
             path="/dashboard"
-            render={() => <Dashboard isAuthenticated={this.state.isAuthenticated} />} 
+            render={() => <Dashboard isAuthenticated={this.state.isAuthenticated} />}
           />
-          <Route exact path="/signup" component={UserSignUp} />
+
+          <Route
+            exact
+            path="/signup"
+            render={() => <UserSignUp onUserSignUp={this.onUserSignUp} />}
+          />
+
           <Route exact path="/signin" component={UserSignIn} />
         </main>
       </div>
     );
+  }
+
+  onUserSignUp = async (user) => {
+    console.log(user.name);
+    console.log(user.email);
+    console.log(user.password);
+
+    const signUpResponse = await Axios({
+      method: 'post',
+      url: 'http://localhost:5555/api/user/signup',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      },
+      data: JSON.stringify(user)
+    });
+
+    if (signUpResponse.status !== 200) {
+      this.setState({ isError: true, message: 'Error signing up.' });
+
+    } else {
+
+      const getUserResponse = await Axios({
+        method: 'get',
+        url: 'http://localhost:5555/api/user',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        }
+      });
+
+      if (getUserResponse.status !== 200) {
+        this.setState({ isError: true, message: 'Error getting user.' });
+
+      } else {
+        this.setState({
+          isError: false,
+          isAuthenticated: true,
+          user: getUserResponse.data.user
+        });
+      }
+    }
   }
 };
 

@@ -14,24 +14,24 @@ router.post('/signup', async (req, res) => {
     return res.status(400).json({ message: 'All fields are requires.' });
   }
  
-  let salt = await bcrypt.genSalt(10);
-  let hash = await bcrypt.hash(salt, password);
-
-  const newUser = new User({
-    name,
-    email,
-    password: hash
-  });
-
   try {
+    const salt = await bcrypt.genSalt(10);
+    const hash = await bcrypt.hash(password, salt);
+
+    const newUser = new User({
+      name,
+      email,
+      password: hash
+    });
+
     const user = await newUser.save();
     const token = await jwt.sign({ id: user.id }, Config.JWT_SECRET, { expiresIn: '1h' });
-
+    
     return res.cookie('token', token).sendStatus(200);
 
   } catch (error) {
     console.log(error);
-    return res.status(400).json({ message: 'Server error.' });
+    return res.status(500).json({ message: 'Server error.' });
   }
 });
 
@@ -66,6 +66,31 @@ router.post('/signin', async (req, res) => {
   } catch (error) {
     console.log(error);
     return res.status(400).json({ message: 'Server error.' });
+  }
+});
+
+// User info
+router.get('/', async (req, res) => {
+  try {
+    const token = req.cookies.token;
+
+    if (!token) {
+      return res.status(400).json({ message: 'No token provided.' });
+    }
+
+    // verify if token is valid
+    jwt.verify(token, Config.JWT_SECRET, async (error, decoded) => {
+      if (error) {
+        return res.status(400).json({ message: 'Invalid token.' });
+      }
+
+      const user = await User.findById(decoded.id);
+      res.status(200).json({ user: { name: user.name, email: user.email } });
+    });
+
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: 'Server error.' });
   }
 });
 
