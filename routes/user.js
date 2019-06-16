@@ -13,7 +13,7 @@ router.post('/signup', async (req, res) => {
   if (!name || !email || !password) {
     return res.status(400).json({ message: 'All fields are requires.' });
   }
- 
+
   try {
     const salt = await bcrypt.genSalt(10);
     const hash = await bcrypt.hash(password, salt);
@@ -26,7 +26,7 @@ router.post('/signup', async (req, res) => {
 
     const user = await newUser.save();
     const token = await jwt.sign({ id: user.id }, Config.JWT_SECRET, { expiresIn: '1h' });
-    
+
     return res.cookie('token', token).sendStatus(200);
 
   } catch (error) {
@@ -44,28 +44,26 @@ router.post('/signin', async (req, res) => {
     return res.status(400).json({ message: 'All fields required.' });
   }
 
-  // Validation - user doesn't exist
-  let user = await User.find({ email });
-
-  if (!user) {
-    return res.status(400).json({ message: 'User does not exist.' });
-  }
-
-  // Validation - invalid credentials
-  const isMatch = await bcrypt.compare(password, user.password);
-
-  if (!isMatch) {
-    return res.status(400).json({ message: 'Invalid credentials.' });
-  }
-
   try {
-    let token = await jwt.sign({ id: user.id }, Config.JWT_SECRET, { expiresIn: '1h' });
+    // Validation - user doesn't exist
+    const user = await User.findOne({ email });
 
-    res.cookie('token', token).sendStatus(200);
+    if (!user) {
+      return res.status(400).json({ message: 'User does not exist.' });
+    }
+
+    // Validation - invalid credentials
+    const isMatch = await bcrypt.compare(password, user.password);
+
+    if (!isMatch) {
+      return res.status(400).json({ message: 'Invalid credentials.' });
+    }
+
+    const token = await jwt.sign({ id: user.id }, Config.JWT_SECRET, { expiresIn: '1h' });
+    return res.cookie('token', token).sendStatus(200);
 
   } catch (error) {
-    console.log(error);
-    return res.status(400).json({ message: 'Server error.' });
+    return res.status(500).json({ message: 'Server error.' });
   }
 });
 
