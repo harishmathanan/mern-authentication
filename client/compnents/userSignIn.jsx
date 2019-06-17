@@ -21,10 +21,11 @@ const UserSignIn = ({ onUserSignIn }) => {
     <div className="row">
       <div className="col-md-12">
 
+        <h3>Sign In</h3>
+        <div className="mb-5">New user? <Link to="/signup">Sign up</Link> for an account now.</div>
+
         <div className="card">
           <div className="card-body">
-            <h3>Sign In</h3>
-            <div className="mb-5">New user? <Link to="/signup">Sign up</Link> for an account now.</div>
 
             <form>
               <div className="form-group mb-3">

@@ -22,9 +22,10 @@ const UserSignUp = ({ onUserSignUp }) => {
     <div className="row">
       <div className="col-md-12">
 
+        <h3>Register a new account</h3>
+
         <div className="card">
           <div className="card-body">
-            <h3>Register a new account</h3>
 
             <form>
               <div className="form-group mb-3">
