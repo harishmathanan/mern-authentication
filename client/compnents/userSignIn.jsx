@@ -18,36 +18,50 @@ const UserSignIn = ({ onUserSignIn }) => {
   }
 
   return (
-    <div>
-      <h3>Sign In</h3>
-      <div>New user? <Link to="/signup">Sign up</Link> for an account now.</div>
-      <form>
+    <div className="row">
+      <div className="col-md-12">
 
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            type="text"
-            id="email"
-            name="email"
-            placeholder="Please enter your email"
-          />
+        <div className="card">
+          <div className="card-body">
+            <h3>Sign In</h3>
+            <div className="mb-5">New user? <Link to="/signup">Sign up</Link> for an account now.</div>
+
+            <form>
+              <div className="form-group mb-3">
+                <label htmlFor="email" className="form-label">Email</label>
+                <input
+                  type="text"
+                  id="email"
+                  name="email"
+                  className="form-control"
+                  placeholder="Please enter your email"
+                />
+              </div>
+
+              <div className="form-group mb-3">
+                <label htmlFor="password" className="form-label">Password</label>
+                <input
+                  type="password"
+                  id="password"
+                  name="password"
+                  className="form-control"
+                  placeholder="Please enter your password"
+                />
+              </div>
+
+              <div className="form-group">
+                <button
+                  className="btn btn-secondary"
+                  onClick={onSignInClick}>
+                  Sign In
+                </button>
+              </div>
+            </form>
+
+          </div>
         </div>
 
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            placeholder="Please enter your password"
-          />
-        </div>
-
-        <div>
-          <button onClick={onSignInClick}>Sign In</button>
-        </div>
-
-      </form>
+      </div>
     </div>
   );
 };

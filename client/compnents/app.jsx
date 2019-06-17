@@ -2,6 +2,8 @@ import React from 'react';
 import Axios from 'axios';
 import { Route, Link } from 'react-router-dom';
 
+import Header from './header';
+import Error from './error';
 import Dashboard from './dashboard';
 import UserSignUp from './userSignUp';
 import UserSignIn from './userSignIn';
@@ -21,21 +23,12 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <header>
-          <div>
-            <Link to="/"><h1>MERN Authentication</h1></Link>
-          </div>
-          <div>
-            <Link to="/dashboard">Dashboard</Link>
-            <span>&nbsp; | &nbsp;</span>
-            <Link to="/signin">Sign In</Link>
-          </div>
-        </header>
+      <div className="container">
+        <Header />
 
-        <div>
-          {this.state.message}
-        </div>
+        {this.state.isError &&
+          <Error message={this.state.message} />
+        }
 
         <main>
           <Route
@@ -65,8 +58,8 @@ class App extends React.Component {
 
           <Route
             exact
-            path="/signin" 
-            render={() => <UserSignIn onUserSignIn={this.onUserSignIn} />} 
+            path="/signin"
+            render={() => <UserSignIn onUserSignIn={this.onUserSignIn} />}
           />
         </main>
       </div>
@@ -113,7 +106,7 @@ class App extends React.Component {
   }
 
   onUserSignIn = async (user) => {
- 
+
     const signInResponse = await Axios({
       method: 'post',
       url: 'http://localhost:5555/api/user/signin',
