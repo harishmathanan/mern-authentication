@@ -10,8 +10,8 @@ import UserSignIn from './userSignIn';
 
 
 class App extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
       isError: false,
@@ -30,7 +30,7 @@ class App extends React.Component {
           <Error message={this.state.message} />
         }
 
-        <main>
+        <main style={{ marginTop: 12 }}>
           <Route
             exact
             path="/"

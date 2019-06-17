@@ -22,7 +22,7 @@ const UserSignIn = ({ onUserSignIn }) => {
       <div className="col-md-12">
 
         <h3>Sign In</h3>
-        <div className="mb-5">New user? <Link to="/signup">Sign up</Link> for an account now.</div>
+        <div>New user? <Link to="/signup">Sign up</Link> for an account now.</div>
 
         <div className="card">
           <div className="card-body">
