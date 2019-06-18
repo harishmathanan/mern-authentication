@@ -4,7 +4,7 @@ import { Route, Link } from 'react-router-dom';
 
 import Header from './header';
 import Error from './error';
-import Dashboard from './dashboard';
+import Home from './home';
 import UserSignUp from './userSignUp';
 import UserSignIn from './userSignIn';
 
@@ -34,20 +34,7 @@ class App extends React.Component {
           <Route
             exact
             path="/"
-            render={() => (
-              <div style={{ marginTop: 10, fontSize: 21 }}>
-                <p>
-                  Hello {this.state.user ? this.state.user.name : 'guest'} and welcome to MERN authentication.
-                  <Link to="/dashboard">Click here</Link> you view your dashboard.
-                </p>
-              </div>
-            )}
-          />
-
-          <Route
-            exact
-            path="/dashboard"
-            render={() => <Dashboard isAuthenticated={this.state.isAuthenticated} />}
+            render={() => <Home isAuthenticated={this.state.isAuthenticated} />}
           />
 
           <Route
