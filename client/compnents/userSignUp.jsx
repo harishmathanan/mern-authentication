@@ -2,7 +2,7 @@ import React from 'react';
 import propTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
 
-const UserSignUp = ({ onUserSignUp }) => {
+const UserSignUp = (props) => {
   const onSignUpClick = (e) => {
     e.preventDefault();
 
@@ -16,12 +16,12 @@ const UserSignUp = ({ onUserSignUp }) => {
       password
     };
 
-    onUserSignUp(user);
+    props.onUserSignUp(user);
   }
 
   return (
     <div className="row">
-      <div className="col-md-12">
+      <div className="col-md-6 col-sm-12">
 
         <h3>Register a new account</h3>
 

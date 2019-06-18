@@ -3,9 +3,6 @@ import propTypes from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 
 const UserSignIn = (props) => {
-  const { onUserSignIn, history } = props;
-  console.log(history);
-
   const onSignInClick = (e) => {
     e.preventDefault();
 
@@ -17,12 +14,12 @@ const UserSignIn = (props) => {
       password
     };
 
-    onUserSignIn(user);
+    props.onUserSignIn(user);
   }
 
   return (
     <div className="row">
-      <div className="col-md-12">
+      <div className="col-md-6 col-sm-12">
 
         <h3>Sign In</h3>
         <div>New user? <Link to="/signup">Sign up</Link> for an account now.</div>
