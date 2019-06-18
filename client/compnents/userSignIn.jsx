@@ -1,8 +1,11 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Link, withRouter } from 'react-router-dom';
 
-const UserSignIn = ({ onUserSignIn }) => {
+const UserSignIn = (props) => {
+  const { onUserSignIn, history } = props;
+  console.log(history);
+
   const onSignInClick = (e) => {
     e.preventDefault();
 
@@ -71,4 +74,4 @@ UserSignIn.propTypes = {
   onUserSignIn: propTypes.func.isRequired
 };
 
-export default UserSignIn;
+export default withRouter(UserSignIn);

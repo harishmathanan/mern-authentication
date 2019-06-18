@@ -1,6 +1,6 @@
 import React from 'react';
 import Axios from 'axios';
-import { Route, Link } from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
 
 import Header from './header';
 import Error from './error';
@@ -34,7 +34,7 @@ class App extends React.Component {
           <Route
             exact
             path="/"
-            render={() => <Home isAuthenticated={this.state.isAuthenticated} />}
+            render={() => <Home isAuthenticated={this.state.isAuthenticated} user={this.state.user} />}
           />
 
           <Route
@@ -132,4 +132,4 @@ class App extends React.Component {
   }
 };
 
-export default App;
+export default withRouter(App);

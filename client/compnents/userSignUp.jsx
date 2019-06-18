@@ -1,5 +1,6 @@
 import React from 'react';
 import propTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
 const UserSignUp = ({ onUserSignUp }) => {
   const onSignUpClick = (e) => {
@@ -82,4 +83,4 @@ UserSignUp.propTypes = {
   onUserSignUp: propTypes.func.isRequired
 };
 
-export default UserSignUp;
+export default withRouter(UserSignUp);

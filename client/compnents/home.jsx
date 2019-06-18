@@ -1,19 +1,27 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom';
+import propTypes from 'prop-types';
+import { withRouter } from 'react-router-dom';
 
-const Home = ({ isAuthenticated }) => {
-  if (!isAuthenticated) {
-    return <Redirect to="/signin" push={true} />
+const Home = (props) => {
+  if (!props.isAuthenticated) {
+    props.history.push('/signin');
+
   }
 
   return (
     <div>
       <p>
-        Hello {this.state.user ? this.state.user.name : 'guest'} and welcome to MERN authentication.
-        <br/> This page is visible only if you have been authenticated.
+        Hello {props.user ? props.user.name : 'guest'} and welcome to MERN authentication.
+        <br /> This page is visible only if you have been authenticated.
       </p>
     </div>
   );
 };
 
-export default Home;
+Home.propTypes = {
+  isAuthenticated: propTypes.bool,
+  user: propTypes.object,
+  history: propTypes.object.isRequired // passed in via-withRouter
+};
+
+export default withRouter(Home);
