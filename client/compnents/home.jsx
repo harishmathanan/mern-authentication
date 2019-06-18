@@ -15,7 +15,7 @@ const Home = ({isAuthenticated, user}) => {
     return (
       <div>
         <p>
-          Hi {user.name}, and welcome to the MERN Authentication example project. You are now signed in.
+          Hi <strong>{user.name}</strong>, and welcome to the MERN Authentication example project. You are now signed in.
         </p>
       </div>
     );

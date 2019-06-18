@@ -31,7 +31,7 @@ class App extends React.Component {
             <ul className="nav justify-content-end">
               <li className="nav-item">
                 {this.state.user
-                  ? <Link className="nav-link active" onClick={this.onUserSignOut}>Sign Out</Link>
+                  ? <Link className="nav-link active" to="/" onClick={this.onUserSignOut}>Sign Out</Link>
                   : <Link className="nav-link active" to="/signin">Sign In</Link>
                 }
               </li>
@@ -146,12 +146,11 @@ class App extends React.Component {
     }
   }
 
-  onUserSignOut = async (e) => {
-    e.preventDefault();
+  onUserSignOut = async () => {
 
     const signOutResponse = await Axios({
       method: 'get',
-      url: 'http://localhost:5555/api/signout',
+      url: 'http://localhost:5555/api/user/signout',
       headers: {
         'Accept': 'application/json',
         'Content-Type': 'application/json'
@@ -159,7 +158,7 @@ class App extends React.Component {
     });
 
     if (signOutResponse.status !== 200) {
-      this.setState({ isError: true, message: 'Error getting user.' });
+      this.setState({ isError: true, message: 'Error signing out.' });
 
     } else {
       this.setState({
