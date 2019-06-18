@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/user');
 const Config = require('../config');
 
+/* -----------------------------------------------------------------------------*/
 // User registration
 router.post('/signup', async (req, res) => {
   const { name, email, password } = req.body;
@@ -34,7 +35,10 @@ router.post('/signup', async (req, res) => {
     return res.status(500).json({ message: 'Server error.' });
   }
 });
+/* -----------------------------------------------------------------------------*/
 
+
+/* -----------------------------------------------------------------------------*/
 // User login
 router.post('/signin', async (req, res) => {
   const { email, password } = req.body;
@@ -66,7 +70,23 @@ router.post('/signin', async (req, res) => {
     return res.status(500).json({ message: 'Server error.' });
   }
 });
+/* -----------------------------------------------------------------------------*/
 
+
+/* -----------------------------------------------------------------------------*/
+router.get('/signout', (req, res) => {
+  try {
+    return res.clearCookie('token').sendStatus(200);
+
+  } catch (error) {
+    console.log(error);
+    return res.status(500).json({ message: 'Server error.' });
+  }
+});
+/* -----------------------------------------------------------------------------*/
+
+
+/* -----------------------------------------------------------------------------*/
 // User info
 router.get('/', async (req, res) => {
   try {
@@ -91,5 +111,6 @@ router.get('/', async (req, res) => {
     return res.status(500).json({ message: 'Server error.' });
   }
 });
+/* -----------------------------------------------------------------------------*/
 
 module.exports = router;
