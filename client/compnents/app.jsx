@@ -24,15 +24,20 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <header>
-          <h1>MERN Authentication</h1>
-          <div>
-            <span>
-              {this.state.user
-                ? <Link to='/signout'>Sign Out</Link>
-                : <Link to="/signin">Sign In</Link>
-              }
-            </span>
+        <header className="row">
+          <div className="col-md-12 col-sm-12">
+
+            <h1 className="display-4"><Link to='/'>MERN Authentication</Link></h1>
+            <ul className="nav justify-content-end">
+              <li className="nav-item">
+                {this.state.user
+                  ? <Link className="nav-link active" onClick={this.onUserSignOut}>Sign Out</Link>
+                  : <Link className="nav-link active" to="/signin">Sign In</Link>
+                }
+              </li>
+            </ul>
+            <hr />
+
           </div>
         </header>
 
@@ -138,6 +143,31 @@ class App extends React.Component {
           user: getUserResponse.data.user
         }, this.props.history.push('/'));
       }
+    }
+  }
+
+  onUserSignOut = async (e) => {
+    e.preventDefault();
+
+    const signOutResponse = await Axios({
+      method: 'get',
+      url: 'http://localhost:5555/api/signout',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+      }
+    });
+
+    if (signOutResponse.status !== 200) {
+      this.setState({ isError: true, message: 'Error getting user.' });
+
+    } else {
+      this.setState({
+        isError: false,
+        message: null,
+        isAuthenticated: false,
+        user: null
+      }, this.props.history.push('/'));
     }
   }
 };
