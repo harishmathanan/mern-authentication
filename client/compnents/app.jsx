@@ -1,8 +1,8 @@
 import React from 'react';
 import Axios from 'axios';
-import { Route, withRouter } from 'react-router-dom';
+import propTypes from 'prop-types';
+import { Route, Link, withRouter } from 'react-router-dom';
 
-import Header from './header';
 import Error from './error';
 import Home from './home';
 import UserSignUp from './userSignUp';
@@ -24,13 +24,23 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <Header />
+        <header>
+          <h1>MERN Authentication</h1>
+          <div>
+            <span>
+              {this.state.user
+                ? <Link to='/signout'>Sign Out</Link>
+                : <Link to="/signin">Sign In</Link>
+              }
+            </span>
+          </div>
+        </header>
 
         {this.state.isError &&
           <Error message={this.state.message} />
         }
 
-        <main style={{ marginTop: 12 }}>
+        <main>
           <Route
             exact
             path="/"
@@ -87,7 +97,7 @@ class App extends React.Component {
           isError: false,
           isAuthenticated: true,
           user: getUserResponse.data.user
-        });
+        }, this.props.history.push('/'));
       }
     }
   }
@@ -126,10 +136,14 @@ class App extends React.Component {
           isError: false,
           isAuthenticated: true,
           user: getUserResponse.data.user
-        });
+        }, this.props.history.push('/'));
       }
     }
   }
+};
+
+App.propTypes = {
+  history: propTypes.object.isRequired
 };
 
 export default withRouter(App);

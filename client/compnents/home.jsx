@@ -1,27 +1,30 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import { withRouter } from 'react-router-dom';
 
-const Home = (props) => {
-  if (!props.isAuthenticated) {
-    props.history.push('/signin');
+const Home = ({isAuthenticated, user}) => {
 
+  if (!isAuthenticated) {
+    return (
+      <div className="row">
+        <div className="col-md-12 col-sm-12">
+          <p>Hi, looks like you have not signed in yet.</p>
+        </div>
+      </div>
+    );
+  } else {
+    return (
+      <div>
+        <p>
+          Hi {user.name}, and welcome to the MERN Authentication example project. You are now signed in.
+        </p>
+      </div>
+    );
   }
-
-  return (
-    <div>
-      <p>
-        Hello {props.user ? props.user.name : 'guest'} and welcome to MERN authentication.
-        <br /> This page is visible only if you have been authenticated.
-      </p>
-    </div>
-  );
 };
 
 Home.propTypes = {
   isAuthenticated: propTypes.bool,
-  user: propTypes.object,
-  history: propTypes.object.isRequired // passed in via-withRouter
+  user: propTypes.object
 };
 
-export default withRouter(Home);
+export default Home;
