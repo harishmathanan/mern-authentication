@@ -31,7 +31,7 @@ router.post('/signup', async (req, res) => {
     const user = await newUser.save();
     const token = await jwt.sign({ id: user.id }, Config.JWT_SECRET, { expiresIn: '1h' });
 
-    return res.cookie('token', token).sendStatus(200);
+    return res.cookie('token', token, { httpOnly: true }).sendStatus(200);
 
   } catch (error) {
     console.log(error);
@@ -70,7 +70,7 @@ router.post('/signin', async (req, res) => {
     }
 
     const token = await jwt.sign({ id: user.id }, Config.JWT_SECRET, { expiresIn: '1h' });
-    return res.cookie('token', token).sendStatus(200);
+    return res.cookie('token', token, { httpOnly: true }).sendStatus(200);
 
   } catch (error) {
     return res.status(500).json({ message: 'Server error.' });
